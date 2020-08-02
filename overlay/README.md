@@ -33,3 +33,5 @@ Reboot and check these files already applied or not in /proc/device-tree/chosen/
 [bb.org-overlay](https://github.com/beagleboard/bb.org-overlays)
 
 [Derek Monlley](http://derekmolloy.ie/gpios-on-the-beaglebone-black-using-device-tree-overlays/)
+
+[ofitselfso](https://www.ofitselfso.com/BeagleNotes/Beaglebone_Black_And_Device_Tree_Overlays.php)
