@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo "Compiling the overlay from .dts to .dtbo"
+FILE_1=DM-GPIO-Test-00A0.dtbo
+FILE_2=BB-UART1-Test-00A0.dtbo
+
+if test -f "dtc-3.8.x.sh"; then
+    echo "Start compile"
+else
+    rm -rf /tmp/git/dtc
+    wget https://raw.githubusercontent.com/RobertCNelson/boot-scripts/master/tools/dtc/dtc-3.8.x.sh
+    chmod +x dtc-3.8.x.sh
+    ./dtc-3.8.x.sh
+    
+fi
+
+
+#remove the old one
+### check if the file exists
+if test -f "$FILE_1.dtbo"; then
+    rm -f $FILE_1
+fi
+
+if test -f "$FILE_2.dtbo"; then
+    rm -f $FILE_2
+fi
+
+
+# compile the new one
+dtc -O dtb -o $FILE_1 -b 0 -@ DM-GPIO-Test.dts
+dtc -O dtb -o $FILE_2 -b 0 -@ BB-UART1-Test-00A0.dts
